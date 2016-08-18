@@ -1,0 +1,6 @@
+C:\Users\Fernando\Source\Repos\geral\HttpServerSelfHost\AngularClient\bin\AngularClient.dll.config
+C:\Users\Fernando\Source\Repos\geral\HttpServerSelfHost\AngularClient\bin\AngularClient.dll
+C:\Users\Fernando\Source\Repos\geral\HttpServerSelfHost\AngularClient\bin\AngularClient.pdb
+C:\Users\Fernando\Source\Repos\geral\HttpServerSelfHost\AngularClient\obj\Debug\AngularClient.csprojResolveAssemblyReference.cache
+C:\Users\Fernando\Source\Repos\geral\HttpServerSelfHost\AngularClient\obj\Debug\AngularClient.dll
+C:\Users\Fernando\Source\Repos\geral\HttpServerSelfHost\AngularClient\obj\Debug\AngularClient.pdb
