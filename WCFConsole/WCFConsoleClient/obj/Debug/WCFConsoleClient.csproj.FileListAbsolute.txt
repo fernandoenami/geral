@@ -1,0 +1,6 @@
+C:\Users\Fernando\documents\visual studio 2015\Projects\WCFConsole\WCFConsoleClient\bin\Debug\WCFConsoleClient.exe.config
+C:\Users\Fernando\documents\visual studio 2015\Projects\WCFConsole\WCFConsoleClient\bin\Debug\WCFConsoleClient.exe
+C:\Users\Fernando\documents\visual studio 2015\Projects\WCFConsole\WCFConsoleClient\bin\Debug\WCFConsoleClient.pdb
+C:\Users\Fernando\documents\visual studio 2015\Projects\WCFConsole\WCFConsoleClient\obj\Debug\WCFConsoleClient.csprojResolveAssemblyReference.cache
+C:\Users\Fernando\documents\visual studio 2015\Projects\WCFConsole\WCFConsoleClient\obj\Debug\WCFConsoleClient.exe
+C:\Users\Fernando\documents\visual studio 2015\Projects\WCFConsole\WCFConsoleClient\obj\Debug\WCFConsoleClient.pdb
