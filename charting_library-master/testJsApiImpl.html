@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- saved from url=(0016)http://localhost -->
+<html>
+	<head>
+
+		<title>TradingView Charting Library JS API</title>
+
+		<!-- Fix for iOS Safari zooming bug -->
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="charting_library/charting_library.min.js"></script>
+		<script type="text/javascript" src="charting_library/datafeed/jsapi/jsApiImpl.js"></script>
+		</head>
+	<body style="margin:0;">
+		<div id="tv_chart_container"></div>
+	</body>
+
+		<script type="text/javascript">
+
+			new TradingView.widget({
+					symbol: 'stock',
+					interval: '1',
+					timezone: "America/Sao_Paulo",
+					container_id: "tv_chart_container",
+					locale: "pt",
+					library_path: "charting_library/",
+					datafeed: new Datafeeds.JSApiCompatibleDataFeed()
+				});
+
+
+		</script>
+
+	
+
+
+
+</html>
