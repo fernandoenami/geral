@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>TradingView Charting Library JS API</title>
+
+		<!-- Fix for iOS Safari zooming bug -->
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="charting_library/charting_library.min.js"></script>
+		<script type="text/javascript" src="charting_library/datafeed/jsapi/jsApiImpl.js"></script>
+		</head>
+    <body style="margin:0;">
+        <div id="tv_chart_container"></div>
+
+
+        <script type="text/javascript">
+
+            var widget = new TradingView.widget({
+                fullscreen: true,
+                symbol: 'stock',
+                interval: '1',
+                timezone: "America/Sao_Paulo",
+                container_id: "tv_chart_container",
+                locale: "pt",
+                library_path: "charting_library/",
+                //debug:true,
+                datafeed: new Datafeeds.JSApiCompatibleDataFeed()
+                
+            });
+            widget.onChartReady(function ()
+            {
+
+               widget.createButton()
+                    .attr('title', "Save chart")
+                    .on('click', function (e)
+                    {
+                        widget.save(function (data)
+                        {
+                            savedWidgetContent = data;
+                            alert('Saved' + JSON.stringify(data));
+                        })
+                    })
+                    .append($('<span>save</span>'));
+
+                widget.createButton()
+                    .attr('title', "Load chart")
+                    .on('click', function (e)
+                    {
+                        if (savedWidgetContent)
+                        {
+                            widget.load(savedWidgetContent);
+                            alert('Load' + JSON.stringify(savedWidgetContent));
+                        }
+                    })
+                    .append($('<span>load</span>'));
+
+                //var d1 = parseInt((new Date('2015-08-10').getTime() / 1000).toFixed(0));
+                //widget.options.datafeed._bar.addData({ time: 1e3 * d1, open: 20, high: 22, low: 23, close: 28, volume: 21056200 });
+                //var d2 = parseInt((new Date('2015-08-11').getTime() / 1000).toFixed(0));
+                //widget.options.datafeed._bar.addData({ time: 1e3 * d2, open: 15, high: 22, low: 14, close: 20, volume: 21056200 });
+                //var d3 = parseInt((new Date('2015-08-12').getTime() / 1000).toFixed(0));
+                //widget.options.datafeed._bar.addData({ time: 1e3 * d3, open: 20, high: 22, low: 23, close: 14, volume: 21056200 });
+            });
+
+			
+            //var bar = new Bar(1, 1);
+            //bar.add(1, 1);
+
+            //'use strict';
+            //var bar = { time: 1e3 * parseInt(1475452800), open: 10, high: 12, low: 13, close: 18, volume: 21056200 };
+            //setInterval(widget.options.datafeed._addBar(bar), 3000);
+
+            function addBar(b)
+            {
+                //jsonStr = "'" + b + "'"
+                //alert(b);
+                //var data = JSON.parse(jsonStr);
+                var d1 = parseInt((new Date('2015-08-10').getTime() / 1000).toFixed(0));
+                widget.options.datafeed._bar.addData({ time: 1e3 * d1, open: 20, high: 22, low: 23, close: 28, volume: 21056200 });
+            }
+        </script>
+        <input type="button" onclick="addBar('a')" />
+    </body>
+
+
+
+</html>

@@ -1,0 +1,22 @@
+﻿<Window x:Class="WpfBrowser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBrowser"
+        mc:Ignorable="d"
+        Title="BrowserChart" Height="400" Width="600" Loaded="Window_Loaded">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Name="txtData"  KeyDown="txtData_KeyDown"/>
+        <WebBrowser Height="380" Grid.Row="1"
+                          Name="Browser"
+                          Source="http://localhost:8080" LoadCompleted="Browser_LoadCompleted" />
+    </Grid>
+
+
+    
+</Window>
