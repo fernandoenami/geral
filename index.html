@@ -13,76 +13,77 @@
 		<script type="text/javascript" src="charting_library/datafeed/jsapi/jsApiImpl.js"></script>
 		</head>
     <body style="margin:0;">
+        <input type="text" size="5" value="PETR4" id="symbol" />
+        <input type="button" onclick="showGraph(document.getElementById('symbol').value, 'VALE DO RIO DOCE')" value="showGraph" />
+        <input type="text" size="5" value="2015-08-12" id="t" />
+        <input type="text" size="3" value="10" id="o" />
+        <input type="text" size="3" value="10" id="h" />
+        <input type="text" size="3" value="10" id="l" />
+        <input type="text" size="3" value="10" id="c" />
+        <input type="text" size="3" value="100" id="v" />
+        <input type="button" onclick="addBar(document.getElementById('t').value, document.getElementById('o').value, document.getElementById('h').value, document.getElementById('l').value, document.getElementById('c').value, document.getElementById('v').value)" value="addBar" />
         <div id="tv_chart_container"></div>
-
-
         <script type="text/javascript">
+            var widget;
 
-            var widget = new TradingView.widget({
-                fullscreen: true,
-                symbol: 'stock',
-                interval: '1',
-                timezone: "America/Sao_Paulo",
-                container_id: "tv_chart_container",
-                locale: "pt",
-                library_path: "charting_library/",
-                //debug:true,
-                datafeed: new Datafeeds.JSApiCompatibleDataFeed()
+            function showGraph(symbolName, symbolDesc)
+            {
+                var symbolInfo = {
+                    name: symbolName,
+                    exchange: "BVMF",
+                    timezone: "America/New_York",
+                    minmov: 1,
+                    minmov2: 0,
+                    pricescale: 10,
+                    pointvalue: 1,
+                    session: "0930-1630",
+                    description: symbolDesc,
+                    //supported_resolutions: ['1'],
+                    has_intraday:true
+                }
+
+                widget = new TradingView.widget({
+                    fullscreen: true,
+                    symbol: symbolInfo.name,
+                    interval: '1',
+                    timezone: "America/Sao_Paulo",
+                    container_id: "tv_chart_container",
+                    locale: "pt",
+                    library_path: "charting_library/",
+                    supports_time: true,
+                    debug: true,
+                    autosize: true,
+                    datafeed: new Datafeeds.JSApiCompatibleDataFeed(symbolInfo)
                 
-            });
-            widget.onChartReady(function ()
-            {
+                });
+                widget.onChartReady(function ()
+                {
 
-               widget.createButton()
-                    .attr('title', "Save chart")
-                    .on('click', function (e)
-                    {
-                        widget.save(function (data)
-                        {
-                            savedWidgetContent = data;
-                            alert('Saved' + JSON.stringify(data));
-                        })
-                    })
-                    .append($('<span>save</span>'));
 
-                widget.createButton()
-                    .attr('title', "Load chart")
-                    .on('click', function (e)
-                    {
-                        if (savedWidgetContent)
-                        {
-                            widget.load(savedWidgetContent);
-                            alert('Load' + JSON.stringify(savedWidgetContent));
-                        }
-                    })
-                    .append($('<span>load</span>'));
+                    //var d1 = parseInt((new Date('2015-08-10').getTime() / 1000).toFixed(0));
+                    //widget.options.datafeed._bar.addData({ time: 1e3 * d1, open: 20, high: 22, low: 23, close: 28, volume: 21056200 });
+                    //var d2 = parseInt((new Date('2015-08-11').getTime() / 1000).toFixed(0));
+                    //widget.options.datafeed._bar.addData({ time: 1e3 * d2, open: 15, high: 22, low: 14, close: 20, volume: 21056200 });
+                    //var d3 = parseInt((new Date('2015-08-12').getTime() / 1000).toFixed(0));
+                    //widget.options.datafeed._bar.addData({ time: 1e3 * d3, open: 20, high: 22, low: 23, close: 14, volume: 21056200 });
+                });
 
-                //var d1 = parseInt((new Date('2015-08-10').getTime() / 1000).toFixed(0));
-                //widget.options.datafeed._bar.addData({ time: 1e3 * d1, open: 20, high: 22, low: 23, close: 28, volume: 21056200 });
-                //var d2 = parseInt((new Date('2015-08-11').getTime() / 1000).toFixed(0));
-                //widget.options.datafeed._bar.addData({ time: 1e3 * d2, open: 15, high: 22, low: 14, close: 20, volume: 21056200 });
-                //var d3 = parseInt((new Date('2015-08-12').getTime() / 1000).toFixed(0));
-                //widget.options.datafeed._bar.addData({ time: 1e3 * d3, open: 20, high: 22, low: 23, close: 14, volume: 21056200 });
-            });
-
-			
-            //var bar = new Bar(1, 1);
-            //bar.add(1, 1);
-
-            //'use strict';
-            //var bar = { time: 1e3 * parseInt(1475452800), open: 10, high: 12, low: 13, close: 18, volume: 21056200 };
-            //setInterval(widget.options.datafeed._addBar(bar), 3000);
-
-            function addBar(b)
-            {
-                //jsonStr = "'" + b + "'"
-                //alert(b);
-                //var data = JSON.parse(jsonStr);
-                var d1 = parseInt((new Date('2015-08-10').getTime() / 1000).toFixed(0));
-                widget.options.datafeed._bar.addData({ time: 1e3 * d1, open: 20, high: 22, low: 23, close: 28, volume: 21056200 });
             }
+
+            function addBar(t, o, h, l, c, v)
+            {
+                //b = "'" + b + "'"
+                //alert(b);
+                ////var data = JSON.parse('{ "time": 1475452800000, "open": 20, "high": 22, "low": 23, "close": 28, "volume": 21056200 }');
+                //var data = JSON.parse(b);
+                //alert(new Date().getTime());
+                var d1 = 1e3 * parseInt((new Date().getTime() / 1000).toFixed(0));
+                //alert(1e3 * d1);
+                widget.options.datafeed._bar.addData({ time: d1, open: o, high: h, low: l, close: c, volume: v });
+            }
+
         </script>
-        <input type="button" onclick="addBar('a')" />
+
     </body>
 
 
